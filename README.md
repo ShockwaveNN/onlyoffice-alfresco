@@ -52,12 +52,17 @@ Installation process is described [here](https://maven.apache.org/install.html)
     > You can download the already compiled package files [here](https://github.com/onlyoffice/onlyoffice-alfresco/releases) and place them to the respective directories.
 
 6. Add the **onlyoffice.url** property to `alfresco-global.properties`:
-    > Probably located here `/usr/local/tomcat/shared/classes/alfresco-global.properties`
+
+  Probably located here `/usr/local/tomcat/shared/classes/alfresco-global.properties`
+
     ```
     onlyoffice.url=http://documentserver/
     ```
 
-    > You may also want to change these (make sure that Document Server will be able to POST to Alfresco)
+
+
+  You may also want to change these (make sure that Document Server will be able to POST to Alfresco)
+
     ```
     alfresco.host=<hostname>
     alfresco.port=443
@@ -69,6 +74,7 @@ Installation process is described [here](https://maven.apache.org/install.html)
     ```
 
 7. Restart Alfresco:
+
     ```bash
     sudo ./alfresco.sh stop
     sudo ./alfresco.sh start
@@ -76,6 +82,15 @@ Installation process is described [here](https://maven.apache.org/install.html)
 
 The module can be checked in administrator tools at `share/page/console/admin-console/module-package` in Alfresco.
 
+## Building from docker-compose
+
+Other way to build ONLYOFFICE Alfresco module package is using docker-compose file.
+
+Use this command from project directory:
+
+    ```bash
+    docker-compose up
+    ```
 
 ## How it works
 
@@ -97,3 +112,4 @@ The ONLYOFFICE integration follows the API documented [here](https://api.onlyoff
 * When all users and client browsers are done with editing, they close the editing window.
 * After 10 seconds of inactivity, ONLYOFFICE Document Server sends a POST to the `callback` URL letting Alfresco know that the clients have finished editing the document and closed it.
 * Alfresco downloads the new version of the document, replacing the old one.
+
